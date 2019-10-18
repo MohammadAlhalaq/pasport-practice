@@ -1,0 +1,73 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;;
+}
+.layout_header{
+  background: crimson;
+  color: aliceblue;
+  padding: 1rem;
+}
+.ancor{
+  text-decoration: none;
+  color: wheat
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  margin: 9vh auto;
+  text-align: center;
+  padding: 1rem;
+  background: crimson;
+  color: white;
+  border-radius: .4rem;
+  font-weight: 900;
+  font-size: 15px;
+  box-shadow: .1px .2px 5px .2px black;
+}
+.header{
+  margin-bottom: 2.5rem;
+}
+.welcome_button-first{
+  background: rgb(230, 168, 12) !important;
+}
+.welcome_button{
+  margin: .2rem;
+  background: floralwhite;
+  outline: none;
+  padding: 1rem;
+  border: none;
+  font-weight: 900;
+  text-decoration: none;
+  color:black
+}
+.welcome_button-first:hover{
+  background: rgb(245, 191, 57) !important;
+}
+.welcome_button:hover{
+  background: rgb(231, 219, 195);
+}
+.register{
+  color: white;
+}
+.register_input{
+  display: block;
+  padding: .8rem;
+  font-size: 22px;
+  margin: .3rem auto;
+  border-radius: .2rem;
+  border: none;  
+  outline: none;
+  width:100%;
+  margin-bottom: 1rem;
+}
+
+.register_signup:hover{
+  background: rgb(230, 168, 12) ;
+}
+.label{
+  width: 100%;
+  text-align: left;
+}
