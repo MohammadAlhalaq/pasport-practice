@@ -11,6 +11,13 @@
   border-radius: .1rem;
   margin: .5rem;
 }
+.center{
+  text-align: center;
+}
+.red{
+  color: red !important;
+}
+
 .success{
   background: rgb(119, 189, 73);
   color: black;
@@ -57,6 +64,7 @@
   text-decoration: none;
   color:black
 }
+
 .welcome_button-first:hover{
   background: rgb(245, 191, 57) !important;
 }
@@ -84,4 +92,30 @@
 .label{
   width: 100%;
   text-align: left;
+}
+
+/* --> dashboard */
+.dashboard{
+  margin-top: 10rem;
+  text-align: center;
+}
+.welcoming{
+  margin-top: 5rem ;
+  text-align: center;
+  font-weight: 900;
+}
+
+.logout_button{
+  margin: .2rem;
+  background: crimson;
+  outline: none;
+  padding: 1rem;
+  display: block;
+  width: 50vh;
+  text-align: center;
+  margin: 2rem auto;
+  border: none;
+  font-weight: 900;
+  text-decoration: none;
+  color:rgb(255, 251, 250);
 }

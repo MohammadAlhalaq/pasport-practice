@@ -3,8 +3,8 @@
     <% if (success_message.length > 0) { %>
       <h3 class="success"> <%= success_message %>  <h3>
     <% } %>
-    <% if (err_message.length > 0) { %>
-      <h3 class="error"> <%=  err_message  %> </h3>
+    <% if (error.length > 0 && !path) { %>
+      <h3 class="error"> <%=  error  %> </h3>
     <% } %>
       
     <form action="/login" method="post">

@@ -1,3 +1,5 @@
+const passport = require('passport');
+
 const { loginSc, signupSc } = require('../../schemas/userSchema');
 
 // const { badData } = require('@hapi/boom');
@@ -6,38 +8,50 @@ const bcrypt = require('bcrypt');
 //user module
 const User = require('../../module/User');
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   res.render('login', {
-    error: '',
     path: '',
     userData: ''
   });
 }
-exports.register = (req, res, next) => {
+exports.logout = (req, res) => {
+  req.logout();
+  req.flash('success_message', "you are loged out");
+  res.redirect('/login');
+}
+exports.register = (req, res) => {
   res.render('register', {
     error: '',
     path: '',
     userData: '',
   });
 }
-exports.dashboard = (req, res, next) => {
+exports.dashboard = (req, res) => {
+  const { user: { name } } = req;
   res.render('dashboard', {
-    user: {name: 'Mohammad'}
+    name,
   });
 }
 exports.postLogin = async (req, res, next) => {
   try{
-    const userData = await loginSc.validateAsync(req.body);
+    await loginSc.validateAsync(req.body);
+    passport.authenticate('local',{ 
+      successRedirect: '/dashboard',
+      failureRedirect: '/login',
+      failureFlash: true
+    })(req, res, next);
     
-  }catch(err){    
+  }catch(err){
+
     res.render('login', {
       error: err.details[0].message || '',
       path: err.details[0].path[0] || '',
       userData: req.body
     });
-}
+
+  }
 };
-exports.postRegister = async (req, res, next) => {
+exports.postRegister = async (req, res) => {
   try{
     const { body } = req;
     const userData = await signupSc.validateAsync(body);

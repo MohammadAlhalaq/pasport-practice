@@ -3,11 +3,17 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
-
 const { join } = require('path');
+const passport = require('passport');
+
+//secret variables
+require('dotenv').config();
 
 const router = require('./routes');
 const users = require('./routes/users');
+
+//Passport Config
+require('./config/passport')(passport);
 
 //DB Config
 const db = require('./config/keys').MongoURI;
@@ -20,7 +26,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true})
 
 //comfigration app
 const app = express();
-const port = process.env.PORT || 10120;
+const port = process.env.PORT || 3012;
 
 //statics
 app.use(express.static(join(__dirname, 'public')));
@@ -35,11 +41,14 @@ app.use(express.json());
 
 //express-session
 app.use(session({
-  secret: 'secret',
+  secret: process.env.KEY,
   resave: true,
   saveUninitialized: true,
 }))
 
+//passport config
+app.use(passport.initialize());
+app.use(passport.session());
 
 //connect-flash
 app.use(flash());
@@ -48,12 +57,14 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.success_message = req.flash('success_message');
   res.locals.err_message = req.flash('err_message');
+  res.locals.error = req.flash('error');
+
   next();
 })
 // ROuter
 app.use( users)
 app.use(router)
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   if (err.isBoom ) {
     if (err.output.statusCode == 422) {
       if(err.output.payload.message.includes('register')){
