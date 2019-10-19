@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const User = require('../module/User');
 const checkValidation = async (email, password, done) => {
   // Match user 
+  
   try{
     const user = await User.findOne({ email });
     if(!user){

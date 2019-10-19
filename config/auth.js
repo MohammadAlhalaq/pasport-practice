@@ -5,6 +5,7 @@ exports.IsLogedIn = (req, res, next) => {
   res.redirect('/login');
 };
 
+
 //if user loged in he cant go to login and sign up
 exports.IsLogedOut = (req, res, next) => {
   if(!req.isAuthenticated())return next();
