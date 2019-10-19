@@ -4,6 +4,13 @@
   box-sizing: border-box;
   font-family: sans-serif;;
 }
+.error{
+  background: rgb(199, 164, 162);
+  color: black;
+  padding: 1rem;
+  border-radius: .1rem;
+  margin: .5rem;
+}
 .layout_header{
   background: crimson;
   color: aliceblue;

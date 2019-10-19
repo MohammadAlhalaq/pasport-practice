@@ -1,28 +1,56 @@
 <div class="card">
     <h1 class="header">Sign Up in MOhammad Academy</h1>
+
+    
     <form action="/register" method="post">
+      <% if(path === 'name') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
       <div class="label">
         <label for="name" >Name
         </label>
       </div>
-      <input id="name" type="text" name="" class="register_input" placeholder="Enter Name">
+      <input id="name" type="text" name="name" class="register_input" placeholder="Enter Name" required>
+      
+      <% if(path === 'email') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
       <div class="label">
         <label for="email" >Email
         </label>
       </div>
-      <input id="email" type="email" name="" class="register_input" placeholder="Enter Email">
+      <input id="email" type="email" name="email" class="register_input" placeholder="Enter Email" required>
+      
+      <% if(path === 'password') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
       <div class="label">
-        <label for="password" >Password
+        <label for="password" >
+          Password
         </label>
       </div>
-      <input id="password" type="password" name="" class="register_input" placeholder="Enter Password">
-      <div class="label">
-        <label for="password" >Confirm Password
-        </label>
-      </div>
-      <input id="password" type="password" name="" class="register_input" placeholder="Enter Confirm Password">
 
-      <input id="button" type="button" name="" class="register_input register_signup" value="Sign Up">
+      <input id="password" type="password" name="password" class="register_input" placeholder="Enter Password" required>
+      <div class="label">
+        <label for="confirmpassword" >
+          Confirm Password
+        </label>
+      </div>
+      <% if(path === 'confirmPass') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
+      
+      <input id="confirmpassword" type="password" name="confirmPass" class="register_input" placeholder="Enter Confirm Password" required>
+
+      <input id="button" type="submit" name="button" value="button" class="register_input register_signup" value="Sign Up">
       <p>Have An Acount? <a class="ancor" href="/login">Login </a></p>
     </form>
   </div>
