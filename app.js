@@ -17,7 +17,7 @@ mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true})
 
 //comfigration app
 const app = express();
-const port = process.env.PORT || 50000;
+const port = process.env.PORT || 10120;
 
 //statics
 app.use(express.static(join(__dirname, 'public')));

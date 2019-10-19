@@ -12,7 +12,7 @@
         <label for="name" >Name
         </label>
       </div>
-      <input id="name" type="text" name="name" class="register_input" placeholder="Enter Name" required>
+      <input id="name" type="text" name="name" value="<%= typeof userData.name !== 'undefined'? userData.name: '' %>" class="register_input" placeholder="Enter Name" required>
       
       <% if(path === 'email') {%>
         <div class="error">
@@ -23,7 +23,7 @@
         <label for="email" >Email
         </label>
       </div>
-      <input id="email" type="email" name="email" class="register_input" placeholder="Enter Email" required>
+      <input id="email" type="email" name="email" value="<%= typeof userData.email !== 'undefined'? userData.email: '' %>" class="register_input" placeholder="Enter Email" required>
       
       <% if(path === 'password') {%>
         <div class="error">
@@ -36,7 +36,7 @@
         </label>
       </div>
 
-      <input id="password" type="password" name="password" class="register_input" placeholder="Enter Password" required>
+      <input id="password" type="password" name="password" value="<%= typeof userData.password !== 'undefined'? userData.password: '' %>" class="register_input" placeholder="Enter Password" required>
       <div class="label">
         <label for="confirmpassword" >
           Confirm Password
@@ -48,7 +48,7 @@
             </div>
       <% } %>
       
-      <input id="confirmpassword" type="password" name="confirmPass" class="register_input" placeholder="Enter Confirm Password" required>
+      <input id="confirmpassword" type="password"   name="confirmPass" value="<%= typeof userData.confirmPass !== 'undefined'? userData.confirmPass: '' %>" class="register_input" placeholder="Enter Confirm Password" required>
 
       <input id="button" type="submit" name="button" value="button" class="register_input register_signup" value="Sign Up">
       <p>Have An Acount? <a class="ancor" href="/login">Login </a></p>
