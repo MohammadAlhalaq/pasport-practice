@@ -1,17 +1,27 @@
 <div class="card">
     <h1 class="header">Login in MOhammad Academy</h1>
     <form action="/login" method="post">
+    <% if(path === 'email') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
     <div class="label">
-      <label for="name" >Name
+      <label for="email" >Email
       </label>
     </div>
-    <input id="email" type="email" name="" class="register_input" placeholder="Enter Email">
+    <input id="email" type="email" name="email" value="<%= userData.email %>" class="register_input" placeholder="Enter Email">
     <div class="label">
+      <% if(path === 'password') {%>
+        <div class="error">
+              <%= error %>
+            </div>
+      <% } %>
       <label for="password" >Password
       </label>
     </div>
-    <input id="password" type="password" name="" class="register_input" placeholder="Enter Password">
-    <input id="button" type="button" name="" class="register_input register_signup" value="Login">
+    <input id="password" type="password" name="password" value="<%= userData.password %>" class="register_input" placeholder="Enter Password">
+    <input id="button" type="submit" name="button" class="register_input register_signup" value="Login">
     <p>You don't have Acount? <a class="ancor" href="/register"> Sign Up </a></p>
 
     </form>
