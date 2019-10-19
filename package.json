@@ -16,6 +16,7 @@
     "@hapi/joi": "^16.1.7",
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
+    "dotenv": "^8.2.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",

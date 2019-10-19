@@ -1,4 +1,7 @@
-.
+
 <h1 class="dashboard">dashboard</h1>
-<p class="welcoming">welcome <%= user.name %></p>
-<a href="/logout" class="ancor">logout</a>
+<% if (error.length > 0) { %>
+      <h3 class="error center red"> <%=  error  %> </h3>
+<% } %>
+<p class="welcoming">welcome <%= name%>
+<a href="/logout" class="ancor logout_button">logout</a>
