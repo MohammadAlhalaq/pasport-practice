@@ -1,5 +1,12 @@
 <div class="card">
     <h1 class="header">Login in MOhammad Academy</h1>
+    <% if (success_message.length > 0) { %>
+      <h3 class="success"> <%= success_message %>  <h3>
+    <% } %>
+    <% if (err_message.length > 0) { %>
+      <h3 class="error"> <%=  err_message  %> </h3>
+    <% } %>
+      
     <form action="/login" method="post">
     <% if(path === 'email') {%>
         <div class="error">

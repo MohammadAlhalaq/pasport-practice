@@ -11,6 +11,13 @@
   border-radius: .1rem;
   margin: .5rem;
 }
+.success{
+  background: rgb(119, 189, 73);
+  color: black;
+  padding: 1rem;
+  border-radius: .1rem;
+  margin: .5rem;
+}
 .layout_header{
   background: crimson;
   color: aliceblue;
