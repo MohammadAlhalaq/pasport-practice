@@ -1,4 +1,5 @@
 const { loginSc, signupSc } = require('../../schemas/userSchema');
+
 // const { badData } = require('@hapi/boom');
 const bcrypt = require('bcrypt');
 
@@ -26,12 +27,13 @@ exports.dashboard = (req, res, next) => {
 }
 exports.postLogin = async (req, res, next) => {
   try{
-    const result = await loginSc.validateAsync(req.body);
+    const userData = await loginSc.validateAsync(req.body);
     
   }catch(err){    
     res.render('login', {
       error: err.details[0].message || '',
-      path: err.details[0].path[0] || ''
+      path: err.details[0].path[0] || '',
+      userData: req.body
     });
 }
 };
@@ -39,9 +41,7 @@ exports.postRegister = async (req, res, next) => {
   try{
     const { body } = req;
     const userData = await signupSc.validateAsync(body);
-    const { name, email, password} = userData;
-    console.log(email);
-    
+    const { name, email, password} = userData;    
     const isuser = await User.findOne({email});
     
     if (isuser) {
@@ -59,14 +59,10 @@ exports.postRegister = async (req, res, next) => {
         password: hash
       });
       await newUser.save();
-      res.render('login', {
-        error: '',
-        path: '',
-        userData
-      })
+      req.flash('success_message', 'you are now registerd and you can login');
+      res.redirect('/login');
     }
   }catch(err){    
-    console.log(err); 
     res.render('register', {
       error: err.details[0].message || '',
       path: err.details[0].path[0] || '',
